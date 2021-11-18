@@ -9,11 +9,7 @@ const modelProduct = require("./src/models/Product.model");
 
 // conexion
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASS}@${DB_SERVER}:${DB_PORT}/${DB_NAME}`,
-  {
-    logging: false,
-    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  }
+  `postgres://${DB_USER}:${DB_PASS}@${DB_SERVER}:${DB_PORT}/${DB_NAME}`
 );
 
 // creamos tablas
