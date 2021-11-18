@@ -11,9 +11,20 @@ const modelClient = require("./src/models/Client.model");
 const modelProduct = require("./src/models/Product.model");
 
 // conexion
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASS}@${DB_SERVER}:${DB_PORT}/${DB_NAME}`
-);
+const sequelize = new Sequelize({
+  database: DB_NAME,
+  username: DB_USER,
+  password: DB_PASS,
+  host: DB_SERVER,
+  port: DB_PORT,
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // <<<<<<< YOU NEED THIS
+    },
+  },
+});
 
 // creamos tablas
 modelClient(sequelize);
